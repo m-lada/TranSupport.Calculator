@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using TranSupport.Calculator.Shared.Interfaces.Repositories;
-using TranSupport.Calculator.Shared.Interfaces.Services;
-using TranSupport.Calculator.Shared.Interfaces.Validators;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces.Validators;
+using TranSupport.Calculator.Data.Repositories.Interfaces;
 using TranSupport.Calculator.Shared.Models.Enums;
 using TranSupport.Calculator.Shared.Models.Users;
 

@@ -15,5 +15,9 @@ internal class StreetVolumeDetailConfiguration : IEntityTypeConfiguration<Street
         builder.HasOne(x => x.TrafficVolume)
             .WithMany(x => x.StreetVolumeDetails)
             .HasForeignKey(x => x.TrafficVolumeId);
+
+        builder.Property(e => e.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .IsRequired();
     }
 }

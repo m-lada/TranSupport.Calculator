@@ -1,6 +1,6 @@
 ﻿using TranSupport.Calculator.Shared.Models.Users;
 
-namespace TranSupport.Calculator.Shared.Interfaces.Services.Authentication;
+namespace TranSupport.Calculator.BusinessLogic.Authentication.Interfaces;
 
 public interface IJwtUtils
 {

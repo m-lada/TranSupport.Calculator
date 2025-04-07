@@ -1,6 +1,6 @@
 ﻿using TranSupport.Calculator.BusinessLogic.Common;
-using TranSupport.Calculator.Shared.Interfaces.Repositories;
-using TranSupport.Calculator.Shared.Interfaces.Validators;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces.Validators;
+using TranSupport.Calculator.Data.Repositories.Interfaces;
 
 namespace TranSupport.Calculator.BusinessLogic.Validators;
 

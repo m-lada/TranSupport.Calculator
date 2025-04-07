@@ -3,7 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using TranSupport.Calculator.Shared.Interfaces.Services.Authentication;
+using TranSupport.Calculator.BusinessLogic.Authentication.Interfaces;
 using TranSupport.Calculator.Shared.Models.Users;
 
 namespace TranSupport.Calculator.BusinessLogic.Authentication;

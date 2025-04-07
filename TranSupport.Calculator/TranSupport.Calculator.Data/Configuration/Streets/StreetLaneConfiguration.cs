@@ -17,5 +17,9 @@ internal class StreetLaneConfiguration : IEntityTypeConfiguration<StreetLane>
         builder.HasOne(x => x.StreetScenario)
             .WithMany(x => x.StreetLane)
             .HasForeignKey(x => x.StreetScenarioId);
+
+        builder.Property(e => e.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .IsRequired();
     }
 }

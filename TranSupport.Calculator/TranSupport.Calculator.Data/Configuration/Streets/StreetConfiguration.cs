@@ -27,5 +27,9 @@ internal class StreetConfiguration : IEntityTypeConfiguration<Street>
             .WithOne(p => p.ExitStreet)
             .HasForeignKey(m => m.ExitStreetId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Property(e => e.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .IsRequired();
     }
 }

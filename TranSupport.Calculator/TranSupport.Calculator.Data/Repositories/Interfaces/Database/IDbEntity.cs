@@ -1,4 +1,4 @@
-﻿namespace TranSupport.Calculator.Shared.Interfaces.Database;
+﻿namespace TranSupport.Calculator.Data.Repositories.Interfaces.Database;
 
 public interface IDbEntity<T>
 {

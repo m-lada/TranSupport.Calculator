@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TranSupport.Calculator.API.Authorization;
-using TranSupport.Calculator.Shared.Interfaces.Services;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces;
 using TranSupport.Calculator.Shared.Models.Enums;
 
 namespace TranSupport.Calculator.API.Controllers;

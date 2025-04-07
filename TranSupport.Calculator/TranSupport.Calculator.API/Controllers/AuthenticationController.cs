@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TranSupport.Calculator.API.Authorization;
-using TranSupport.Calculator.Shared.Interfaces.Services.Authentication;
+using TranSupport.Calculator.BusinessLogic.Authentication.Interfaces;
 using TranSupport.Calculator.Shared.Models.Authenticate;
 using TranSupport.Calculator.Shared.Models.Enums;
 

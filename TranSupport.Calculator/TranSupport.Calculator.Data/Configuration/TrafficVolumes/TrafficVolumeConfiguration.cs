@@ -19,5 +19,9 @@ internal class TrafficVolumeConfiguration : IEntityTypeConfiguration<TrafficVolu
         builder.HasOne(x => x.Intersection)
             .WithMany(x => x.TrafficVolumes)
             .HasForeignKey(x => x.IntersectionId);
+
+        builder.Property(e => e.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .IsRequired();
     }
 }

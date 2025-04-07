@@ -1,6 +1,6 @@
 ﻿using TranSupport.Calculator.Shared.Models.Projects;
 
-namespace TranSupport.Calculator.Shared.Interfaces.Services;
+namespace TranSupport.Calculator.BusinessLogic.Services.Interfaces;
 
 public interface IProjectService
 {

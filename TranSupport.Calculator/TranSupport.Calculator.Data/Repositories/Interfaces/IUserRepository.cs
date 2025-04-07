@@ -1,6 +1,6 @@
 ﻿using TranSupport.Calculator.Shared.Models.Users;
 
-namespace TranSupport.Calculator.Shared.Interfaces.Repositories;
+namespace TranSupport.Calculator.Data.Repositories.Interfaces;
 
 public interface IUserRepository
 {

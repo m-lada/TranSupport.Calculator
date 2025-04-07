@@ -1,6 +1,6 @@
-﻿using TranSupport.Calculator.Shared.Interfaces.Repositories;
-using TranSupport.Calculator.Shared.Interfaces.Services.Authentication;
-using TranSupport.Calculator.Shared.Interfaces.Validators;
+﻿using TranSupport.Calculator.BusinessLogic.Authentication.Interfaces;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces.Validators;
+using TranSupport.Calculator.Data.Repositories.Interfaces;
 using TranSupport.Calculator.Shared.Models.Authenticate;
 
 namespace TranSupport.Calculator.BusinessLogic.Authentication;

@@ -1,4 +1,4 @@
-﻿using TranSupport.Calculator.Shared.Interfaces.Validators;
+﻿using TranSupport.Calculator.BusinessLogic.Services.Interfaces.Validators;
 using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace TranSupport.Calculator.BusinessLogic.Validators;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using TranSupport.Calculator.Shared.Interfaces.Database;
-using TranSupport.Calculator.Shared.Interfaces.Repositories;
+using TranSupport.Calculator.Data.Repositories.Interfaces;
+using TranSupport.Calculator.Data.Repositories.Interfaces.Database;
 
 namespace TranSupport.Calculator.Data.Repositories;
 
@@ -10,22 +10,26 @@ public class CrudRepository<TEntity, TDomain, IdType> : IRepository<IdType, TDom
         where TDomain : class
 {
     protected readonly IMapper _mapper;
+    protected readonly ICurrentUserService _currentUserService;
+
     protected DatabaseContext _context { get; }
     protected DbSet<TEntity> DbSet => _context.Set<TEntity>();
 
-    public CrudRepository(DatabaseContext dbContext, IMapper mapper)
+    public CrudRepository(DatabaseContext dbContext, IMapper mapper, ICurrentUserService currentUserService)
     {
         _context = dbContext;
         _mapper = mapper;
+        _currentUserService = currentUserService;
     }
 
     public async Task<TDomain> AddAsync(TDomain item)
     {
         var entity = _mapper.Map<TEntity>(item);
 
+        entity.CreatorId = _currentUserService.UserId;
         entity.CreatedAt = DateTime.Now;
-        //TODO
-        //Add concurrency stamp and creator/modifier Id from logged user
+
+        entity.ConcurrencyStamp = Guid.NewGuid().ToString();
 
         await _context.Set<TEntity>().AddAsync(entity);
         await _context.SaveChangesAsync();
@@ -50,25 +54,31 @@ public class CrudRepository<TEntity, TDomain, IdType> : IRepository<IdType, TDom
 
     public async Task<TDomain> UpdateAsync(TDomain item)
     {
-        var entity = _mapper.Map<TEntity>(item);
-        var mappedEntity = await DbSet.FindAsync(entity.Id);
+        var updatedEntity = _mapper.Map<TEntity>(item);
+        var dbEntity = await DbSet.FindAsync(updatedEntity.Id);
 
-        if (mappedEntity == null)
+        if (dbEntity == null)
         {
-            throw new ArgumentException($"Entity with given id `{entity.Id}` not found!");
+            throw new ArgumentException($"Entity with given id `{updatedEntity.Id}` not found!");
         }
 
-        entity.ModifiedAt = DateTime.UtcNow;
-        entity.CreatedAt = mappedEntity.CreatedAt;
-        //TODO
-        //Add concurrency stamp and creator/modifier Id from logged user
+        if (dbEntity.ConcurrencyStamp != updatedEntity.ConcurrencyStamp)
+        {
+            throw new DbUpdateConcurrencyException("Record was modified by another user.");
+        }
 
-        _context.Entry(mappedEntity).Property(x => x.CreatedAt).IsModified = false;
-        _context.Entry(mappedEntity).CurrentValues.SetValues(entity);
+        updatedEntity.ConcurrencyStamp = Guid.NewGuid().ToString();
+
+        updatedEntity.ModifiedAt = DateTime.UtcNow;
+        updatedEntity.CreatedAt = dbEntity.CreatedAt;
+        updatedEntity.ModifierId = _currentUserService.UserId;
+
+        _context.Entry(dbEntity).Property(x => x.CreatedAt).IsModified = false;
+        _context.Entry(dbEntity).CurrentValues.SetValues(updatedEntity);
 
         await _context.SaveChangesAsync();
 
-        return _mapper.Map<TDomain>(mappedEntity);
+        return _mapper.Map<TDomain>(dbEntity);
     }
 
     public async Task DeleteAsync(IdType id)

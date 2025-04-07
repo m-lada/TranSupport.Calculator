@@ -17,5 +17,9 @@ internal class IntersectionScenarioConfiguration : IEntityTypeConfiguration<Inte
         builder.HasOne(x => x.Intersection)
             .WithMany(x => x.IntersectionScenarios)
             .HasForeignKey(x => x.IntersectionId);
+
+        builder.Property(e => e.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .IsRequired();
     }
 }

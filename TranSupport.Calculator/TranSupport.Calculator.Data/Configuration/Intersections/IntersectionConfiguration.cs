@@ -17,5 +17,9 @@ internal class IntersectionConfiguration : IEntityTypeConfiguration<Intersection
         builder.HasOne(x => x.Project)
             .WithMany(x => x.Intersections)
             .HasForeignKey(x => x.ProjectId);
+
+        builder.Property(e => e.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .IsRequired();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using TranSupport.Calculator.BusinessLogic.Authentication;
-using TranSupport.Calculator.Shared.Interfaces.Services;
-using TranSupport.Calculator.Shared.Interfaces.Services.Authentication;
+using TranSupport.Calculator.BusinessLogic.Authentication.Interfaces;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces;
 
 namespace TranSupport.Calculator.API.Middleware;
 

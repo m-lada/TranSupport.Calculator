@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TranSupport.Calculator.Shared.Interfaces.Database;
+using TranSupport.Calculator.Data.Repositories.Interfaces.Database;
 
 namespace TranSupport.Calculator.Data.Entities.Database;
 

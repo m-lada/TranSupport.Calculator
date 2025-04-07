@@ -1,4 +1,4 @@
-﻿namespace TranSupport.Calculator.Shared.Interfaces.Validators;
+﻿namespace TranSupport.Calculator.BusinessLogic.Services.Interfaces.Validators;
 
 public interface IUserValidationService
 {

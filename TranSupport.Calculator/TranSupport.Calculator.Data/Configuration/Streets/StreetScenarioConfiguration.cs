@@ -23,5 +23,9 @@ internal class StreetScenarioConfiguration : IEntityTypeConfiguration<StreetScen
             .WithMany(x => x.StreetScenarios)
             .HasForeignKey(x => x.StreetId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Property(e => e.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .IsRequired();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using TranSupport.Calculator.Shared.Interfaces.Services;
+using TranSupport.Calculator.Data.Repositories.Interfaces;
 
-namespace TranSupport.Calculator.BusinessLogic.Services;
+namespace TranSupport.Calculator.Data.Repositories.Common;
 
 public class CurrentUserService : ICurrentUserService
 {

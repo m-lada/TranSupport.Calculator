@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TranSupport.Calculator.Data.Entities;
-using TranSupport.Calculator.Shared.Interfaces.Repositories;
+using TranSupport.Calculator.Data.Repositories.Interfaces;
 using TranSupport.Calculator.Shared.Models.Users;
 
 namespace TranSupport.Calculator.Data.Repositories;

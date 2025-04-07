@@ -1,4 +1,4 @@
-﻿namespace TranSupport.Calculator.Shared.Interfaces.Services;
+﻿namespace TranSupport.Calculator.Data.Repositories.Interfaces;
 
 public interface ICurrentUserService
 {

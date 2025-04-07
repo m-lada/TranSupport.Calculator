@@ -1,12 +1,13 @@
 ﻿using FluentValidation;
 using TranSupport.Calculator.BusinessLogic.Authentication;
+using TranSupport.Calculator.BusinessLogic.Authentication.Interfaces;
 using TranSupport.Calculator.BusinessLogic.Services;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces;
+using TranSupport.Calculator.BusinessLogic.Services.Interfaces.Validators;
 using TranSupport.Calculator.BusinessLogic.Validators;
 using TranSupport.Calculator.Data.Repositories;
-using TranSupport.Calculator.Shared.Interfaces.Repositories;
-using TranSupport.Calculator.Shared.Interfaces.Services;
-using TranSupport.Calculator.Shared.Interfaces.Services.Authentication;
-using TranSupport.Calculator.Shared.Interfaces.Validators;
+using TranSupport.Calculator.Data.Repositories.Common;
+using TranSupport.Calculator.Data.Repositories.Interfaces;
 using TranSupport.Calculator.Shared.Models.Users;
 using TranSupport.Calculator.Shared.Models.Validators;
 
