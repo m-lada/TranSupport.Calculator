@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\**" />
-    <Content Remove="Models\**" />
-    <EmbeddedResource Remove="Models\**" />
-    <None Remove="Models\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
@@ -42,12 +35,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TranSupport.Calculator.BusinessLogic\TranSupport.Calculator.BusinessLogic.csproj" />
     <ProjectReference Include="..\TranSupport.Calculator.Data\TranSupport.Calculator.Data.csproj" />
-    <ProjectReference Include="..\TranSupport.Calculator.Domain\TranSupport.Calculator.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Authentication\" />
-    <Folder Include="Settings\" />
+    <ProjectReference Include="..\TranSupport.Calculator.Shared\TranSupport.Calculator.Shared.csproj" />
   </ItemGroup>
 
 </Project>

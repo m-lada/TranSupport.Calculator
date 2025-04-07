@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TranSupport.Calculator.Domain\TranSupport.Calculator.Shared.csproj" />
+    <ProjectReference Include="..\TranSupport.Calculator.Shared\TranSupport.Calculator.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

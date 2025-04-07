@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranSupport.Calculator.API"
 		{7A33C3F6-E4A5-4C41-AFD3-09792B405077} = {7A33C3F6-E4A5-4C41-AFD3-09792B405077}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranSupport.Calculator.Shared", "TranSupport.Calculator.Domain\TranSupport.Calculator.Shared.csproj", "{271E1DF3-EF2C-42DA-8CB0-985C5CC5404D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranSupport.Calculator.Shared", "TranSupport.Calculator.Shared\TranSupport.Calculator.Shared.csproj", "{271E1DF3-EF2C-42DA-8CB0-985C5CC5404D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
