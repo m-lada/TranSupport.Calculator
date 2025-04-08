@@ -2,8 +2,12 @@
 
 public enum TurnRelationType
 {
+    Ahead = 0,
     Left = 1,
-    Ahead = 2,
-    Right = 3,
+    LeftAhead = 10,
+    LeftBack = 19,
+    Right = 2,
+    RightAhead = 20,
+    RightBack = 29,
     TurnBack = 9,
 }

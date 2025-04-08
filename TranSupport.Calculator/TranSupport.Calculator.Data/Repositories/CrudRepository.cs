@@ -5,9 +5,12 @@ using TranSupport.Calculator.Data.Repositories.Interfaces.Database;
 
 namespace TranSupport.Calculator.Data.Repositories;
 
-public class CrudRepository<TEntity, TDomain, IdType> : IRepository<IdType, TDomain>
+public class CrudRepository<TEntity, TDomainDto, TCreateDomainDto, TUpdateDomainDto, IdType>
+    : IRepository<IdType, TDomainDto, TCreateDomainDto, TUpdateDomainDto>
         where TEntity : class, IAuditedDbEntity<IdType>
-        where TDomain : class
+        where TDomainDto : class
+        where TCreateDomainDto : class
+        where TUpdateDomainDto : class
 {
     protected readonly IMapper _mapper;
     protected readonly ICurrentUserService _currentUserService;
@@ -22,7 +25,7 @@ public class CrudRepository<TEntity, TDomain, IdType> : IRepository<IdType, TDom
         _currentUserService = currentUserService;
     }
 
-    public async Task<TDomain> AddAsync(TDomain item)
+    public async Task<TDomainDto> CreateAsync(TCreateDomainDto item)
     {
         var entity = _mapper.Map<TEntity>(item);
 
@@ -34,25 +37,22 @@ public class CrudRepository<TEntity, TDomain, IdType> : IRepository<IdType, TDom
         await _context.Set<TEntity>().AddAsync(entity);
         await _context.SaveChangesAsync();
 
-        return _mapper.Map<TDomain>(entity);
+        return _mapper.Map<TDomainDto>(entity);
     }
 
-    public async Task<TDomain> GetByIdAsync(IdType id)
+    public async Task<TDomainDto> GetAsync(IdType id)
     {
         var entity = await DbSet.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(id));
-        return _mapper.Map<TDomain>(entity);
+
+        if (entity == null)
+        {
+            throw new ArgumentNullException();
+        }
+
+        return _mapper.Map<TDomainDto>(entity);
     }
 
-    public async Task<IList<TDomain>> GetAllAsync()
-    {
-        var listOfEntities = await DbSet.AsNoTracking().ToListAsync();
-
-        return listOfEntities
-            .Select(x => _mapper.Map<TDomain>(x))
-            .ToList();
-    }
-
-    public async Task<TDomain> UpdateAsync(TDomain item)
+    public async Task<TDomainDto> UpdateAsync(TUpdateDomainDto item)
     {
         var updatedEntity = _mapper.Map<TEntity>(item);
         var dbEntity = await DbSet.FindAsync(updatedEntity.Id);
@@ -78,7 +78,7 @@ public class CrudRepository<TEntity, TDomain, IdType> : IRepository<IdType, TDom
 
         await _context.SaveChangesAsync();
 
-        return _mapper.Map<TDomain>(dbEntity);
+        return _mapper.Map<TDomainDto>(dbEntity);
     }
 
     public async Task DeleteAsync(IdType id)

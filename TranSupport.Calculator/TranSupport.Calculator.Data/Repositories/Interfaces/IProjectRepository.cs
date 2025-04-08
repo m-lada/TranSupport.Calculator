@@ -2,6 +2,6 @@
 
 namespace TranSupport.Calculator.Data.Repositories.Interfaces;
 
-public interface IProjectRepository : IRepository<Guid, ProjectDto>
+public interface IProjectRepository : IRepository<Guid, ProjectDto, CreateProjectDto, UpdateProjectDto>
 {
 }
